@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Login | Raj Enterprises</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="display:block">
+<div class="auth">
+  <div class="hero"><div class="login-eyebrow">RAJ ENTERPRISES · BUSINESS SUITE</div>
+    <h1>Your departmental store, organised.<br><em>All in one place.</em></h1>
+    <p>Manage packaged groceries, household essentials, billing and stock — all from one place.</p>
+    <ul><li>Fast GST billing with PDF invoices</li><li>Low-stock and expiry alerts</li><li>Customer ledger and payment history</li><li>Daily and monthly sales reports</li></ul>
+  </div>
+  <div class="formside"><form class="box" id="f" novalidate><div class="login-mark">RE</div><div class="login-eyebrow">SECURE ADMIN ACCESS</div>
+    <h2 id="ttl">Welcome back</h2><p id="sub">Sign in to Raj Enterprises, Jatin Arora.</p>
+    <label for="em">Email</label><input id="em" type="email" autocomplete="email">
+    <label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password">
+    <div class="err" id="er" role="alert"></div>
+    <button class="btn" id="go">Sign in to dashboard</button>
+    <p class="swap"><a id="forgot" href="#">Forgot password?</a></p><p class="login-footnote">Raj Enterprises · Store Management System</p>
+  </form></div>
+</div>
+<script>
+// This is a frontend-only college project. Change these two values before use.
+const ADMIN_EMAIL = 'jatin@gmail.com';
+const ADMIN_PASSWORD = 'jatin123';
+const ADMIN_NAME = 'Jatin Arora';
+
+const emailInput = document.getElementById('em');
+const passwordInput = document.getElementById('pw');
+const errorBox = document.getElementById('er');
+
+// Opens an email draft to the administrator. It does not reset the password.
+document.getElementById('forgot').href =
+  'mailto:' + ADMIN_EMAIL + '?subject=' + encodeURIComponent('Raj Enterprises - Password Help');
+
+// Always display the login page when login.html is opened.
+// A previous browser session must not skip this screen.
+localStorage.removeItem('ds_session');
+
+document.getElementById('f').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const email = emailInput.value.trim().toLowerCase();
+  if (email !== ADMIN_EMAIL.toLowerCase() || passwordInput.value !== ADMIN_PASSWORD) {
+    errorBox.textContent = 'Incorrect admin email or password.';
+    return;
+  }
+  localStorage.setItem('ds_session', JSON.stringify({ name: ADMIN_NAME, email: ADMIN_EMAIL }));
+  location.href = 'index.html';
+});
+</script>
+</body>
+</html>

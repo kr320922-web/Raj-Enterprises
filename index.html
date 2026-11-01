@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Raj Enterprises - Store Management System</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside id="side">
+  <div class="brand" id="brand"></div>
+  <nav id="nav"></nav>
+</aside>
+<main>
+  <header class="top">
+    <button id="menu" aria-label="Open menu">☰</button>
+    <div class="grow"><h1 id="title">Dashboard</h1><div class="subt" id="subt"></div></div>
+    <span class="today" id="today"></span>
+    <span class="user" id="user"></span>
+    <button class="out" id="logout">Log out</button>
+  </header>
+  <div id="view"></div>
+</main>
+<div class="modal" id="modal" hidden><div class="mbox" id="mbox"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>window.VIEWS = {};</script>
+<script src="script.js"></script>
+<script src="products.js"></script>
+<script src="billing.js"></script>
+<script src="modules2.js"></script>
+<script>go(location.hash.slice(1) || "dashboard");</script>
+</body>
+</html>
